@@ -1,6 +1,6 @@
 require 'json'
-require 'yaml'
 require 'optparse'
+require 'yaml'
 
 require_relative 'aar/version'
 require_relative 'aar/cli'
