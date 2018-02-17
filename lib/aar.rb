@@ -1,7 +1,7 @@
 require 'yaml'
 require 'optparse'
 
-require 'aar/version'
+require_relative 'aar/version'
 
 module Aar
   class AssumeRole
