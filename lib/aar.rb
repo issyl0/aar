@@ -4,9 +4,11 @@ require 'optparse'
 require_relative 'aar/version'
 require_relative 'aar/cli'
 require_relative 'aar/config'
+require_relative 'aar/commands'
 
 Aar::Cli
 Aar::Config
+Aar::Commands.new
 
 module Aar
   class AssumeRole
@@ -21,22 +23,6 @@ module Aar
         print_access_keys
       end
       print_token_expiry
-    end
-
-    def construct_command
-      @command = {}
-      @config_file[@environment].each do |k,v|
-        @command[k] = v
-      end
-    end
-
-    def run_command
-      @tokens = `aws \
-      --profile=#{@command["profile"]} sts assume-role \
-      --role-session-name "$(whoami)-$(date +%d-%m-%y_%H-%M)" \
-      --role-arn "arn:aws:iam::#{@command["role_account_id"]}:role/#{@command["role"]}" \
-      --serial-number "arn:aws:iam::#{@command["mfa_account_id"]}:mfa/#{@command["username"]}" \
-      --token-code #{@mfa_code}`
     end
 
     def parse_tokens
