@@ -27,10 +27,9 @@ module Aar
     end
 
     def print_access_keys
-      access_keys = export_access_keys
-      access_keys.gsub!("export ", "")
-      access_keys.gsub!("=",": ")
-      puts "echo #{access_keys}"
+      puts "echo 'AWS_SESSION_TOKEN: #{@access_key}\n'"
+      puts "echo 'AWS_SECRET_ACCESS_KEY: #{@secret_key}\n'"
+      puts "echo 'AWS_SESSION_TOKEN: #{@session_token}\n'"
     end
   end
 end
