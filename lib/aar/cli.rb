@@ -12,7 +12,7 @@ module Aar
 
         opts.on_tail("-h", "--help", "Show this help message.") do
           puts opts
-          exit
+          exit 1
         end
       end.parse!
 
