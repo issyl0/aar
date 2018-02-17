@@ -16,7 +16,7 @@ module Aar
       $tokens = `aws \
       --profile=#{@command["profile"]} sts assume-role \
       --role-session-name "$(whoami)-$(date +%d-%m-%y_%H-%M)" \
-      --role-arn "arn:aws:iam::#{@command["role_account_id"]}:role/#{@command["role"]}" \
+      --role-arn "arn:aws:iam::#{@command["role_account_id"]}:role/#{@command["role_name"]}" \
       --serial-number "arn:aws:iam::#{@command["mfa_account_id"]}:mfa/#{@command["username"]}" \
       --token-code #{$mfa_code}`
     end
