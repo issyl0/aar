@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+`bundle exec aar -e environment -o output -m mfa_code`
 
 ## Development
 
