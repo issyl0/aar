@@ -1,4 +1,4 @@
 #!/usr/bin/env ruby
-require 'aar'
+require_relative '../lib/aar'
 
-Aar::AssumeRole.new(ARGV).call
+Aar.new(ARGV)
