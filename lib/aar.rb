@@ -14,3 +14,5 @@ Aar::Config
 Aar::Commands.new
 Aar::AccessKeys.new
 Aar::TokenExpiry.print_token_expiry
+
+exit
