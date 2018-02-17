@@ -10,10 +10,16 @@ module Aar
     end
 
     def parse_tokens
-      @access_key = JSON.parse($tokens)['Credentials']['AccessKeyId']
-      @secret_key = JSON.parse($tokens)['Credentials']['SecretAccessKey']
-      @session_token = JSON.parse($tokens)['Credentials']['SessionToken']
-      $session_token_expiry = DateTime.parse(JSON.parse($tokens)['Credentials']['Expiration']).strftime('%H:%M:%S')
+      begin
+        @access_key = JSON.parse($tokens)['Credentials']['AccessKeyId']
+        @secret_key = JSON.parse($tokens)['Credentials']['SecretAccessKey']
+        @session_token = JSON.parse($tokens)['Credentials']['SessionToken']
+        $session_token_expiry = DateTime.parse(JSON.parse($tokens)['Credentials']['Expiration']).strftime('%H:%M:%S')
+      rescue JSON::ParserError
+        # The `aws` cli tool will output its error to the shell,
+        # so there's no need to explicitly print anything here.
+        exit 1
+      end
     end
 
     def export_access_keys
