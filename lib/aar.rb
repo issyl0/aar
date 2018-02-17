@@ -3,8 +3,10 @@ require 'optparse'
 
 require_relative 'aar/version'
 require_relative 'aar/cli'
+require_relative 'aar/config'
 
 Aar::Cli
+Aar::Config
 
 module Aar
   class AssumeRole
@@ -19,15 +21,6 @@ module Aar
         print_access_keys
       end
       print_token_expiry
-    end
-
-    def config
-      if ENV['AAR_CONFIG_FILE']
-        @config_file = YAML.load_file(File.expand_path(ENV['AAR_CONFIG_FILE']))
-      else
-        puts "Error: Specify a config file as an envvar: AAR_CONFIG_FILE."
-        exit
-      end
     end
 
     def construct_command
