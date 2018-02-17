@@ -17,14 +17,14 @@ module Aar
     end
 
     def export_access_keys
-      puts "bash -c export AWS_SESSION_TOKEN=#{@access_key}"
-      puts "bash -c export AWS_SECRET_ACCESS_KEY=#{@secret_key}"
-      puts "bash -c export AWS_SESSION_TOKEN=#{@session_token}"
+      puts "export AWS_SESSION_TOKEN=#{@access_key}")
+      puts "export AWS_SECRET_ACCESS_KEY=#{@secret_key}")
+      puts "export AWS_SESSION_TOKEN=#{@session_token}")
     end
 
     def print_access_keys
       access_keys = export_access_keys
-      access_keys.gsub!("bash -c export ", "")
+      access_keys.gsub!("export ", "")
       access_keys.gsub!("=",": ")
       access_keys
     end
