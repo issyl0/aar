@@ -9,7 +9,7 @@ require_relative 'aar/commands'
 require_relative 'aar/access_keys'
 require_relative 'aar/token_expiry'
 
-Aar::Cli
+Aar::Cli.new(ARGV)
 Aar::Config
 Aar::Commands.new
 Aar::AccessKeys.new
